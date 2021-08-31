@@ -90,50 +90,50 @@ void Lista<T>::modificarDatos(int idBus, T infoNueva) {
 
     while ((actual != NULL) && continuar) {
         if ((actual->id == idBus) && continuar) {
-            cout << "Datos de la facultad:" << endl;
-            cout << actual->info.nombreFacultad << endl;
-            cout << actual->info.nombreDecano << endl;
-            cout << actual->info.ubicacion << endl;
-            cout << actual->info.telefono << endl;
+            cout << "Modificando datos de facultad:" << endl;
+            actual->info.nombreFacultad = infoNueva.nombreFacultad;
+            actual->info.nombreDecano = infoNueva.nombreDecano << endl;
+            actual->info.ubicacion = infoNueva.ubicacion;
+            actual->info.telefono = infoNueva.telefono;
             continuar = false;
         } else {
             Nodo<T> *actualCarrera = new Nodo<T>;
             actualCarrera = actual->info.carreras.obtenerPrimero();
             while ((actualCarrera != NULL) && continuar) {
                 if (actualCarrera->id == idBus) {
-                    cout << "Datos encontrados para la carrera:" << endl;
-                    cout << actualCarrera->info.nombreCarrera << endl;
-                    cout << actualCarrera->info.coordinador << endl;
-                    cout << actualCarrera->info.ubicacion << endl;
+                    cout << "Modificando datos de carrera carrera:" << endl;
+                    actualCarrera->info.nombreCarrera = infoNueva.nombreCarrera;
+                    actualCarrera->info.coordinador = infoNueva.coordinador;
+                    actualCarrera->info.ubicacion = infoNueva.ubicacion;
                     continuar = false;
                 } else {
                     Nodo<T> *actualAsig = new Nodo<T>;
                     actualAsig = actualCarrera->info.asig.obtenerPrimero();
-                    while ((actualAsig != NULL)&& continuar) {
+                    while ((actualAsig != NULL) && continuar) {
                         if (actualAsig->id == idBus) {
-                            cout << "Datos encontrados para la carrera:" << endl;
-                            cout << actualAsig->info.nombre << endl;
-                            cout << actualAsig->info.semestre << endl;
+                            cout << "Modificando datos para la asignatura:" << endl;
+                            actualAsig->info.nombre = infoNueva.nombre;
+                            actualAsig->info.semestre = infoNueva.semestre;
                             continuar = false;
                         } else {
                             Nodo<T> *actualProf = new Nodo<T>;
                             actualProf = actualAsig->info.prof.obtenerPrimero();
                             while ((actualProf != NULL) && continuar) {
                                 if (actualProf->id == idBus) {
-                                    cout << "Datos encontrados para el docente:" << endl;
-                                    cout << actualProf->info.nombre << endl;
-                                    cout << actualProf->info.pregrado << endl;
-                                    cout << actualProf->info.uPregrado << endl;
+                                    cout << "Modificando datos del docente:" << endl;
+                                    actualProf->info.nombre = infoNueva.nombre;
+                                    actualProf->info.pregrado = infoNueva.pregrado;
+                                    actualProf->info.uPregrado = infoNueva.uPregrado;
                                     continuar = false;
                                 } else {
                                     Nodo<T> *actualPos = new Nodo<T>;
                                     actualPos = actualProf->info.pos.obtenerPrimero();
                                     while ((actualPos != NULL) && continuar) {
                                         if (actualPos->id == idBus) {
-                                            cout << "Datos encontrados para el posgrado:" << endl;
-                                            cout << actualPos->info.nombrePosgrado << endl;
-                                            cout << actualPos->info.tematica << endl;
-                                            cout << actualPos->info.universidad << endl;
+                                            cout << "Modificando datos de posgrados:" << endl;
+                                            actualPos->info.nombrePosgrado = infoNueva.nombrePosgrado;
+                                            actualPos->info.tematica = infoNueva.tematica;
+                                            actualPos->info.universidad = infoNueva.universidad;
                                             continuar = false;
                                         }
                                         actualPos = actualPos->sig_cabeza;
@@ -151,8 +151,8 @@ void Lista<T>::modificarDatos(int idBus, T infoNueva) {
         cout << "Los datos no han sido encontrados en la facultad" << actual->info.nombreFacultad << endl;
         actual = actual->sig_cabeza;
     }
-    if (continuar){
-        cout<<"Los datos no fueron encontrados"<<endl;
+    if (continuar) {
+        cout << "Los datos no fueron encontrados, sin modificaciones" << endl;
     }
 }
 
